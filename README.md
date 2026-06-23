@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Termux%20%7C%20Windows%20%7C%20macOS-lightgrey.svg)]()
 [![Version](https://img.shields.io/badge/Version-2.1.0-red.svg)]()
-
+<a href="#"><img src="https://img.shields.io/badge/Made%20in-Bangladesh-006747?style=for-the-badge&labelColor=000000&color=006747&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDA2NzQ3IiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjE2MCIgZmlsbD0iI2ZmMDAwMCIvPjwvc3ZnPg==" alt="Made in Bangladesh"></a>
 > **Extract All Links & URLs from Any Website - Universal Terminal Tool**
 
 ## ✨ Features
