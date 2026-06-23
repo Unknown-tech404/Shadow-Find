@@ -28,15 +28,11 @@
 
 ## 📸 Screenshots
 
-### Terminal Output - Scan in Progress
+### Terminal Output - Scan in Progress & Results Summary
 <p align="center">
-  <img src="https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/assets/terminal_scan.png" alt="SHADOW FIND Scanning" width="100%">
+  <img src="https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/assets/terminal.png" alt="SHADOW FIND Scanning" width="100%">
 </p>
 
-### Terminal Output - Results Summary
-<p align="center">
-  <img src="https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/assets/terminal_results.png" alt="SHADOW FIND Results" width="100%">
-</p>
 
 ## 📦 Installation
 
