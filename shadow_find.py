@@ -17,6 +17,33 @@ from datetime import datetime
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse, urljoin, urlunparse
+import hashlib
+import getpass
+
+# ============================================================================
+# AUTHENTICATION
+# ============================================================================
+
+AUTH_ENABLED = True
+USERNAME = "Shadow"
+PASSWORD = "Find"
+PASSWORD_HASH = hashlib.sha256(PASSWORD.encode()).hexdigest()
+
+def authenticate():
+    """Simple username/password authentication"""
+    print("\n🔐 SHADOW FIND Authentication Required\n")
+    
+    user = input("Username: ").strip()
+    if user != USERNAME:
+        print(f"\n{Colors.RED}❌ Invalid username!{Colors.RESET}")
+        sys.exit(1)
+    
+    password = getpass.getpass("Password: ")
+    if hashlib.sha256(password.encode()).hexdigest() != PASSWORD_HASH:
+        print(f"\n{Colors.RED}❌ Invalid password!{Colors.RESET}")
+        sys.exit(1)
+    
+    print(f"\n{Colors.GREEN}✅ Authentication successful!{Colors.RESET}\n")
 
 # ============================================================================
 # COLORS
@@ -356,6 +383,9 @@ class ShadowFind:
 # ============================================================================
 
 def main():
+    # Run authentication
+    authenticate()
+    
     parser = argparse.ArgumentParser(description='SHADOW FIND - Universal Link Extractor Runtime Platform')
     parser.add_argument('url', help='Target endpoint domain network interface to scan')
     parser.add_argument('-t', '--threads', type=int, default=10, help='Max thread-pool size limits context (default: 10)')
