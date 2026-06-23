@@ -1,4 +1,4 @@
-```markdown
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/banner.png" alt="SHADOW FIND Banner" width="100%">
 </p>
