@@ -1,9 +1,9 @@
+# 🔍 SHADOW FIND - Universal Link Extractor
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/banner.png" alt="SHADOW FIND Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/assets/banner.png" alt="SHADOW FIND Banner" width="100%">
 </p>
 
-# 🔍 SHADOW FIND - Universal Link Extractor
 
 [![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -30,12 +30,12 @@
 
 ### Terminal Output - Scan in Progress
 <p align="center">
-  <img src="https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/terminal_scan.png" alt="SHADOW FIND Scanning" width="100%">
+  <img src="https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/assets/terminal_scan.png" alt="SHADOW FIND Scanning" width="100%">
 </p>
 
 ### Terminal Output - Results Summary
 <p align="center">
-  <img src="https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/terminal_results.png" alt="SHADOW FIND Results" width="100%">
+  <img src="https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/assets/terminal_results.png" alt="SHADOW FIND Results" width="100%">
 </p>
 
 ## 📦 Installation
@@ -43,8 +43,8 @@
 ### From Source
 ```bash
 # Clone the repository
-git clone https://github.com/unknown-tech404/shadow-find.git
-cd shadow-find
+git clone https://github.com/unknown-tech404/Shadow-Find.git
+cd Shadow-Find
 
 # Install dependencies
 pip install -r requirements.txt
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 ### Direct Download
 ```bash
 # Download the script
-wget https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/shadow_find.py
+wget https://raw.githubusercontent.com/unknown-tech404/Shadow-Find/main/shadow_find.py
 
 # Make it executable
 chmod +x shadow_find.py
@@ -92,7 +92,6 @@ optional arguments:
 ```
 
 ## 📊 Output Example
-
 ```
 📊 SCAN RESULTS SUMMARY
 =======================================================================
@@ -215,7 +214,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## 📞 Contact & Support
 
 - GitHub: [@unknown-tech404](https://github.com/unknown-tech404)
-- Issues: [Report a bug](https://github.com/unknown-tech404/shadow-find/issues)
+- Issues: [Report a bug](https://github.com/unknown-tech404/Shadow-Find/issues)
 
 ---
 
@@ -226,45 +225,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <p align="center">
   <i>Made with ❤️ for the cybersecurity community</i>
 </p>
-```
-
----
-
-## 📸 ছবি যোগ করার নির্দেশনা:
-
-### 1. **Banner Photo** (`banner.png`)
-- SHADOW FIND এর লোগো/ব্যানার তৈরি করুন
-- সাইজ: 1200x300 px (recommended)
-- পাথ: `assets/banner.png`
-
-### 2. **Terminal Scan Photo** (`terminal_scan.png`)
-- টুল চলাকালীন স্ক্রিনশট
-- সাইজ: 1200x600 px
-- পাথ: `assets/terminal_scan.png`
-
-### 3. **Terminal Results Photo** (`terminal_results.png`)
-- স্ক্যান শেষে ফলাফল দেখানো স্ক্রিনশট
-- সাইজ: 1200x600 px
-- পাথ: `assets/terminal_results.png`
-
-### 📁 Folder Structure:
-```
-Shadow-Find/
-├── shadow_find.py
-├── setup.py
-├── requirements.txt
-├── README.md
-├── LICENSE
-├── .gitignore
-└── assets/
-    ├── banner.png
-    ├── terminal_scan.png
-    └── terminal_results.png
-```
-
-### 🔗 Image URLs in README:
-```markdown
-https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/banner.png
-https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/terminal_scan.png
-https://raw.githubusercontent.com/unknown-tech404/shadow-find/main/assets/terminal_results.png
 ```
