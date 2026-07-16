@@ -17,6 +17,33 @@ from datetime import datetime
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse, urljoin, urlunparse
+import hashlib
+import getpass
+
+# ============================================================================
+# AUTHENTICATION
+# ============================================================================
+
+AUTH_ENABLED = True
+USERNAME = "Shadow"
+PASSWORD = "Find"
+PASSWORD_HASH = hashlib.sha256(PASSWORD.encode()).hexdigest()
+
+def authenticate():
+    """Simple username/password authentication"""
+    print("\n🔐 SHADOW FIND Authentication Required\n")
+    
+    user = input("Username: ").strip()
+    if user != USERNAME:
+        print(f"\n{Colors.RED}❌ Invalid username!{Colors.RESET}")
+        sys.exit(1)
+    
+    password = getpass.getpass("Password: ")
+    if hashlib.sha256(password.encode()).hexdigest() != PASSWORD_HASH:
+        print(f"\n{Colors.RED}❌ Invalid password!{Colors.RESET}")
+        sys.exit(1)
+    
+    print(f"\n{Colors.GREEN}✅ Authentication successful!{Colors.RESET}\n")
 
 # ============================================================================
 # COLORS
@@ -77,7 +104,6 @@ class ShadowFind:
         self.stylesheets = set()
         self.forms = set()
         self.emails = set()
-        self.admin_panels = set()  # Replaced phone_numbers with admin_panels
         self.jsons = set()
         self.xmls = set()
         self.pdfs = set()
@@ -98,7 +124,7 @@ class ShadowFind:
     ███████║██║  ██║██║  ██║██████╔╝╚██████╔╝╚███╔███╔╝ ██║     ██║██║ ╚████║██████╔╝
     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═╝     ╚═╝╚═╝  ╚═══╝╚═════╝ 
                                                                                      
-                    {Colors.GREEN}UNIVERSAL LINK EXTRACTOR - v2.2{Colors.RESET}{Colors.RED}                           
+                    {Colors.GREEN}UNIVERSAL LINK EXTRACTOR - v2.1{Colors.RESET}{Colors.RED}                           
               {Colors.YELLOW}Extract All Links & URLs from Any Website{Colors.RESET}{Colors.RED} 
                     {Colors.CYAN}Author:{Colors.RESET} {Colors.WHITE}Unknown-tech404{Colors.RESET}                            
 """
@@ -155,19 +181,6 @@ class ShadowFind:
         except Exception:
             return False
 
-    def check_admin_panel(self, url):
-        """Checks if a URL matches common administrative portal structures"""
-        admin_keywords = [
-            '/admin', '/login', '/wp-admin', '/wp-login', '/administrator', 
-            '/backend', '/cpanel', '/dashboard', '/controlpanel', '/manage', 
-            '/signin', '/auth', '/webmaster', '/portal'
-        ]
-        parsed = urlparse(url)
-        path = parsed.path.lower()
-        
-        if any(keyword in path for keyword in admin_keywords):
-            self.admin_panels.add(url)
-
     def extract_links_from_page(self, url, depth):
         """Scrapes web assets and schedules found internal pointers to current thread-pool layer"""
         with self.lock:
@@ -211,9 +224,6 @@ class ShadowFind:
                             else:
                                 self.external_links.add(normalized)
 
-                            # Run target through administrative portal evaluation logic
-                            self.check_admin_panel(normalized)
-
                             # Categorization sorting metrics engines
                             lowered = normalized.lower()
                             if lowered.endswith('.json'): self.jsons.add(normalized)
@@ -221,7 +231,7 @@ class ShadowFind:
                             elif lowered.endswith('.pdf'): self.pdfs.add(normalized)
                             elif lowered.endswith(('.doc', '.docx')): self.docs.add(normalized)
         
-        # Identity Profile Scrapers (Emails)
+        # Identity Profile Scrapers (Emails only)
         for email in re.findall(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', content):
             self.emails.add(email)
         
@@ -301,7 +311,6 @@ class ShadowFind:
         print(f"  {Colors.GREEN}●{Colors.RESET} Stylesheet (CSS) Links:  {Colors.WHITE}{len(self.stylesheets)}{Colors.RESET}")
         print(f"  {Colors.GREEN}●{Colors.RESET} Interactive Form Links:  {Colors.WHITE}{len(self.forms)}{Colors.RESET}")
         print(f"  {Colors.GREEN}●{Colors.RESET} Target Emails Found:     {Colors.WHITE}{len(self.emails)}{Colors.RESET}")
-        print(f"  {Colors.GREEN}●{Colors.RESET} Admin Panels Tracked:    {Colors.WHITE}{len(self.admin_panels)}{Colors.RESET}")
         print(f"  {Colors.GREEN}●{Colors.RESET} Total Execution Time:    {Colors.WHITE}{elapsed:.2f}s{Colors.RESET}\n")
         
         # Display explicit panel sections cleanly
@@ -311,7 +320,6 @@ class ShadowFind:
         self._render_section("SCRIPTS FOUND", self.scripts, Colors.GREEN)
         self._render_section("STYLESHEETS FOUND", self.stylesheets, Colors.BLUE)
         self._render_section("EMAILS DISCOVERED", self.emails, Colors.BLUE)
-        self._render_section("ADMIN PANELS / PAGE LINKS", self.admin_panels, Colors.RED)
         
         print(f"{Colors.GREEN}{'='*75}{Colors.RESET}")
         print(f"{Colors.GREEN}[✓] Scan Routine execution finished successfully.{Colors.RESET}")
@@ -342,8 +350,7 @@ class ShadowFind:
                     'scripts': len(self.scripts),
                     'stylesheets': len(self.stylesheets),
                     'forms': len(self.forms),
-                    'emails': len(self.emails),
-                    'admin_panels': len(self.admin_panels)
+                    'emails': len(self.emails)
                 },
                 'data_records': {
                     'internal_links': sorted(list(self.internal_links)),
@@ -352,8 +359,7 @@ class ShadowFind:
                     'scripts': sorted(list(self.scripts)),
                     'stylesheets': sorted(list(self.stylesheets)),
                     'forms': sorted(list(self.forms)),
-                    'emails': sorted(list(self.emails)),
-                    'admin_panels': sorted(list(self.admin_panels))
+                    'emails': sorted(list(self.emails))
                 }
             }
             with open(filename, 'w', encoding='utf-8') as f:
@@ -368,6 +374,9 @@ class ShadowFind:
 # ============================================================================
 
 def main():
+    # Run authentication
+    authenticate()
+    
     parser = argparse.ArgumentParser(description='SHADOW FIND - Universal Link Extractor Runtime Platform')
     parser.add_argument('url', help='Target endpoint domain network interface to scan')
     parser.add_argument('-t', '--threads', type=int, default=10, help='Max thread-pool size limits context (default: 10)')
